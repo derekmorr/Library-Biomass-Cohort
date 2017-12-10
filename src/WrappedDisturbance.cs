@@ -13,7 +13,7 @@ namespace Landis.Library.BiomassCohorts
     public class WrappedDisturbance
         : IDisturbance
     {
-        private AgeOnlyCohorts.ICohortDisturbance ageCohortDisturbance;
+        private readonly AgeOnlyCohorts.ICohortDisturbance ageCohortDisturbance;
 
         //---------------------------------------------------------------------
 

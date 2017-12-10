@@ -13,7 +13,7 @@ namespace Landis.Library.BiomassCohorts
     public class Cohort
         : ICohort
     {
-        private ISpecies species;
+        private readonly ISpecies species;
         private CohortData data;
 
         //---------------------------------------------------------------------

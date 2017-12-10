@@ -13,20 +13,6 @@ namespace Landis.Library.BiomassCohorts
     /// </summary>
     public interface ICalculator
     {
-        /// <summary>
-        /// The total mortality (excluding annual leaf litter) for the cohort
-        /// that was passed as a parameter in the most recent call to the
-        /// ComputeChange method.
-        /// </summary>
-        /// <remarks>
-        /// Reflects the cohort's contribution to the growing space available
-        /// next year.
-        /// </remarks>
-        //int MortalityWithoutLeafLitter
-        //{
-        //    get;
-        //}
-
         //---------------------------------------------------------------------
 
         /// <summary>
@@ -45,15 +31,8 @@ namespace Landis.Library.BiomassCohorts
         /// <param name="prevYearSiteMortality">
         /// The total mortality at the site during the previous year.
         /// </param>
-//        int ComputeChange(ICohort cohort,
-//                          ActiveSite site);
-                          //int siteBiomass);
-                          //int        prevYearSiteMortality);
-
         int ComputeChange(ICohort cohort,
                           ActiveSite site);
-                          //int siteBiomass,
-                          //int prevYearSiteMortality);
 
         //---------------------------------------------------------------------
 

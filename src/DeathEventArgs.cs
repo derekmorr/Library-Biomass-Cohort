@@ -10,23 +10,13 @@ namespace Landis.Library.BiomassCohorts
     /// Information about a cohort's death.
     /// </summary>
     public class DeathEventArgs
-        //: Landis.Library.BaseCohorts.DeathEventArgs //<ICohort, ExtensionType>
     {
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        /*public DeathEventArgs(ICohort    cohort,
-                              ActiveSite site,
-                              ExtensionType disturbanceType)
-            //:base(cohort, site, disturbanceType)
-        {
-            this.cohort = cohort;
-            this.site = site;
-            this.disturbanceType = disturbanceType;
-        }*/
-        private ICohort cohort;
-        private ActiveSite site;
-        private ExtensionType disturbanceType;
+        private readonly ICohort cohort;
+        private readonly ActiveSite site;
+        private readonly ExtensionType disturbanceType;
 
         //---------------------------------------------------------------------
 

@@ -3,7 +3,6 @@
 
 using Landis.Core;
 using Landis.SpatialModeling;
-//using Landis.SpatialModeling.CoreServices;
 
 namespace Landis.Library.BiomassCohorts
 {
@@ -12,8 +11,8 @@ namespace Landis.Library.BiomassCohorts
     /// </summary>
     public class DisturbanceEventArgs
     {
-        private ActiveSite site;
-        private ExtensionType disturbanceType;
+        private readonly ActiveSite site;
+        private readonly ExtensionType disturbanceType;
 
         //---------------------------------------------------------------------
 

@@ -8,8 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System;
-
-using log4net;
+using System.Text;
 
 namespace Landis.Library.BiomassCohorts
 {
@@ -17,13 +16,11 @@ namespace Landis.Library.BiomassCohorts
         : ISiteCohorts, AgeOnlyCohorts.ISiteCohorts
 
     {
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        private static readonly bool isDebugEnabled = log.IsDebugEnabled;
         public int InitialBiomass;
 
         //---------------------------------------------------------------------
 
-        private List<SpeciesCohorts> cohorts;
+        private readonly List<SpeciesCohorts> cohorts;
 
         //---------------------------------------------------------------------
 
@@ -92,7 +89,6 @@ namespace Landis.Library.BiomassCohorts
         /// </param>
         public void Grow(ActiveSite site, bool isSuccessionTimestep)
         {
-            //Console.WriteLine("successionTimestep ={0}. Cohort timestep ={1}", successionTimestep, Cohorts.SuccessionTimeStep);
             if (isSuccessionTimestep && Cohorts.SuccessionTimeStep > 1)
                 foreach (SpeciesCohorts speciesCohorts in cohorts)
                     speciesCohorts.CombineYoungCohorts();
@@ -111,9 +107,6 @@ namespace Landis.Library.BiomassCohorts
         /// </param>
         private void GrowFor1Year(ActiveSite site)
         {
-            //if (isDebugEnabled)
-            //Console.WriteLine("site {0}: grow cohorts for 1 year", site.Location);
-
             //  Create a list of iterators, one iterator per set of species
             //  cohorts.  Iterators go through a species' cohorts from oldest
             //  to youngest.  The list is sorted by age, oldest to youngest;
@@ -125,8 +118,6 @@ namespace Landis.Library.BiomassCohorts
                 OldToYoungIterator itor = speciesCohorts.OldToYoung;
                 InsertIterator(itor, itors);
             }
-
-            //int siteMortality = 0;
 
             //  Loop through iterators until they're exhausted
             while (itors.Count > 0)
@@ -241,7 +232,6 @@ namespace Landis.Library.BiomassCohorts
                 if (cohorts[i].Count == 0)
                     cohorts.RemoveAt(i);
             }
-            //totalBiomass -= totalReduction;
         }
 
         //---------------------------------------------------------------------
@@ -259,11 +249,6 @@ namespace Landis.Library.BiomassCohorts
 
         public void AddNewCohort(ISpecies species, ushort age, int initialBiomass)
         {
-            //if (isDebugEnabled)
-            //    log.DebugFormat("  add cohort: {0}, initial biomass = {1}; site biomass = {2}",
-            //                    species.Name, initialBiomass, totalBiomass);
-            // int initialBiomass = InitialBiomass;
-
             bool speciesPresent = false;
             for (int i = 0; i < cohorts.Count; i++)
             {
@@ -330,11 +315,11 @@ namespace Landis.Library.BiomassCohorts
 
         public string Write()
         {
-            string list = "";
+            StringBuilder builder = new StringBuilder();
             foreach (ISpeciesCohorts sppcohorts in this)
                 foreach (ICohort cohort in sppcohorts)
-                    list += String.Format("{0}:{1}. ", cohort.Species.Name, cohort.Age);
-            return list;
+                    builder.AppendFormat("{0}:{1}. ", cohort.Species.Name, cohort.Age);
+            return builder.ToString();
         }
 
 

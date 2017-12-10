@@ -13,7 +13,7 @@ namespace Landis.Library.BiomassCohorts
     /// </summary>
     public class OldToYoungIterator
     {
-        private SpeciesCohorts cohorts;
+        private readonly SpeciesCohorts cohorts;
  
         //  Index of the current cohort among the set of cohorts.
         private int? index;
@@ -102,17 +102,13 @@ namespace Landis.Library.BiomassCohorts
         /// cohort.
         /// </returns>
         public void GrowCurrentCohort(ActiveSite site)
-                                     //ref int    siteBiomass, 
-                                     //int        prevYearMortality)
         {
             if (! index.HasValue)
                 throw NoCurrentCohortException();
 
-            //int cohortMortality;
-            nextIndex = cohorts.GrowCohort(index.Value, site); //, ref siteBiomass, prevYearMortality, out cohortMortality);
+            nextIndex = cohorts.GrowCohort(index.Value, site);
 
             currentCohortDied = (nextIndex == index.Value);
-            return; // cohortMortality;
         }
 
         //---------------------------------------------------------------------

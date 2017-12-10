@@ -21,7 +21,6 @@ namespace Landis.Library.BiomassCohorts
             /// </summary>
             public delegate double Compute(ICohort    cohort,
                                            ActiveSite site);
-                                           //int        siteBiomass);
         }
 
         //---------------------------------------------------------------------

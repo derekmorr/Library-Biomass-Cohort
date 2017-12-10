@@ -11,10 +11,10 @@ namespace Landis.Library.BiomassCohorts
     /// </summary>
     public class PartialDeathEventArgs
     {
-        private ICohort cohort;
-        private ActiveSite site;
-        private ExtensionType disturbanceType;
-        private float reduction;
+        private readonly ICohort cohort;
+        private readonly ActiveSite site;
+        private readonly ExtensionType disturbanceType;
+        private readonly float reduction;
 
         //---------------------------------------------------------------------
 
