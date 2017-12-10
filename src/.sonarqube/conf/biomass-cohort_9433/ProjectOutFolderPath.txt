@@ -1,1 +1,0 @@
-/home/derek/landis/Library-Biomass-Cohort/src/.sonarqube/out/biomass-cohort_9433
