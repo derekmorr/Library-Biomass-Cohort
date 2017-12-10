@@ -1,8 +1,8 @@
-using Edu.Wisc.Forest.Flel.Grids;
+// using Edu.Wisc.Forest.Flel.Grids;
 using Edu.Wisc.Forest.Flel.Util;
 
 using Landis.Biomass;
-using Landis.Landscape;
+using Landis.SpatialModeling;
 using Landis.PlugIns;
 using Landis.Species;
 

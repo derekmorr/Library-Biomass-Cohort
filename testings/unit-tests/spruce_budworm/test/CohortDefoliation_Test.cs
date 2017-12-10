@@ -1,8 +1,9 @@
-using Edu.Wisc.Forest.Flel.Grids;
+// using Edu.Wisc.Forest.Flel.Grids;
 using Edu.Wisc.Forest.Flel.Util;
 
-using Landis.Biomass;
-using Landis.Landscape;
+using Landis.Core;
+using Landis.Library.BiomassCohorts;
+using Landis.SpatialModeling;
 using Landis.Species;
 
 using NUnit.Framework;
@@ -21,7 +22,7 @@ namespace Landis.Test.Biomass
 
         //---------------------------------------------------------------------
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void Init()
         {
             betualle = Data.Species["betualle"];
@@ -81,12 +82,11 @@ namespace Landis.Test.Biomass
         //---------------------------------------------------------------------
 
         [Test]
-        [ExpectedException(typeof(System.ArgumentNullException))]
         public void NullCompute()
         {
             CohortDefoliation.Delegates.Compute computeMethod = CohortDefoliation.Compute;
             try {
-                CohortDefoliation.Compute = null;
+                Assert.Throws<System.ArgumentNullException>(() => CohortDefoliation.Compute = null);
             }
             finally {
                 // If the expected exception didn't happen, make sure to

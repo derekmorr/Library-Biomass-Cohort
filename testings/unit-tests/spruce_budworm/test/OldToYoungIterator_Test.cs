@@ -1,8 +1,9 @@
-using Edu.Wisc.Forest.Flel.Grids;
+// using Edu.Wisc.Forest.Flel.Grids;
 using Edu.Wisc.Forest.Flel.Util;
 
-using Landis.Biomass;
-using Landis.Landscape;
+using Landis.Core;
+using Landis.Library.BiomassCohorts;
+using Landis.SpatialModeling;
 using Landis.Species;
 
 using NUnit.Framework;
@@ -18,7 +19,7 @@ namespace Landis.Test.Biomass
 
         //---------------------------------------------------------------------
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void Init()
         {
             betualle = Data.Species["betualle"];
@@ -35,7 +36,7 @@ namespace Landis.Test.Biomass
 
         //---------------------------------------------------------------------
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
             Landis.Biomass.Cohort.DeathEvent -= DeathNotExpected;
@@ -133,22 +134,26 @@ namespace Landis.Test.Biomass
         //---------------------------------------------------------------------
 
         [Test]
-        [ExpectedException(typeof(System.InvalidOperationException))]
         public void Timestep10_AtEnd_GrowCurrent()
         {
-            OldToYoungIterator itor = CreateAndUseItor(10);
-            int siteBiomass = 0;
-            itor.GrowCurrentCohort(activeSite, ref siteBiomass, 0);
+            Assert.Throws<System.InvalidOperationException>(() => 
+            {
+                OldToYoungIterator itor = CreateAndUseItor(10);
+                int siteBiomass = 0;
+                itor.GrowCurrentCohort(activeSite, ref siteBiomass, 0);
+            });
         }
 
         //---------------------------------------------------------------------
 
         [Test]
-        [ExpectedException(typeof(System.InvalidOperationException))]
         public void Timestep10_AtEnd_Age()
         {
-            OldToYoungIterator itor = CreateAndUseItor(10);
-            int dummy = itor.Age;
+            Assert.Throws<System.InvalidOperationException>(() => 
+            {
+                OldToYoungIterator itor = CreateAndUseItor(10);
+                int dummy = itor.Age;
+            });
         }
 
         //---------------------------------------------------------------------
@@ -171,22 +176,26 @@ namespace Landis.Test.Biomass
         //---------------------------------------------------------------------
 
         [Test]
-        [ExpectedException(typeof(System.InvalidOperationException))]
         public void Timestep1_AtEnd_GrowCurrent()
         {
-            OldToYoungIterator itor = CreateAndUseItor(1);
-            int siteBiomass = 0;
-            itor.GrowCurrentCohort(activeSite, ref siteBiomass, 0);
+            Assert.Throws<System.InvalidOperationException>(() =>
+            {
+                OldToYoungIterator itor = CreateAndUseItor(1);
+                int siteBiomass = 0;
+                itor.GrowCurrentCohort(activeSite, ref siteBiomass, 0);
+            });
         }
 
         //---------------------------------------------------------------------
 
         [Test]
-        [ExpectedException(typeof(System.InvalidOperationException))]
         public void Timestep1_AtEnd_Age()
         {
-            OldToYoungIterator itor = CreateAndUseItor(1);
-            int dummy = itor.Age;
+            Assert.Throws<System.InvalidOperationException>(() =>
+            {
+                OldToYoungIterator itor = CreateAndUseItor(1);
+                int dummy = itor.Age;
+            });
         }
 
         //---------------------------------------------------------------------
@@ -218,22 +227,27 @@ namespace Landis.Test.Biomass
         //---------------------------------------------------------------------
 
         [Test]
-        [ExpectedException(typeof(System.InvalidOperationException))]
         public void Timestep1_CombineYoung_AtEnd_GrowCurrent()
         {
-            OldToYoungIterator itor = CreateAndUseItor(CreateCohortsAndCombineYoung(1));
-            int siteBiomass = 0;
-            itor.GrowCurrentCohort(activeSite, ref siteBiomass, 0);
+            Assert.Throws<System.InvalidOperationException>(() =>
+            {
+                OldToYoungIterator itor = CreateAndUseItor(CreateCohortsAndCombineYoung(1));
+                int siteBiomass = 0;
+                itor.GrowCurrentCohort(activeSite, ref siteBiomass, 0);
+            });
         }
 
         //---------------------------------------------------------------------
 
         [Test]
-        [ExpectedException(typeof(System.InvalidOperationException))]
         public void Timestep1_CombineYoung_AtEnd_Age()
         {
-            OldToYoungIterator itor = CreateAndUseItor(CreateCohortsAndCombineYoung(1));
-            int dummy = itor.Age;
+            Assert.Throws<System.InvalidOperationException>(() =>
+            {
+                OldToYoungIterator itor = CreateAndUseItor(CreateCohortsAndCombineYoung(1));
+                int dummy = itor.Age;
+            });
+            
         }
     }
 }

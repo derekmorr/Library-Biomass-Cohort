@@ -1,5 +1,6 @@
-using Landis.Biomass;
-using Landis.Landscape;
+using Landis.Core;
+using Landis.Library.BiomassCohorts;
+using Landis.SpatialModeling;
 using Landis.Species;
 
 using NUnit.Framework;

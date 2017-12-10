@@ -1,8 +1,9 @@
-using Edu.Wisc.Forest.Flel.Grids;
+// using Edu.Wisc.Forest.Flel.Grids;
 using Edu.Wisc.Forest.Flel.Util;
 
-using Landis.Biomass;
-using Landis.Landscape;
+using Landis.Core;
+using Landis.Library.BiomassCohorts;
+using Landis.SpatialModeling;
 using Landis.PlugIns;
 using Landis.Species;
 
@@ -110,7 +111,7 @@ namespace Landis.Test.Biomass
 
         //---------------------------------------------------------------------
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void Init()
         {
             poputrem = Data.Species["poputrem"];
@@ -141,7 +142,7 @@ namespace Landis.Test.Biomass
 
         //---------------------------------------------------------------------
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
             Landis.Biomass.Cohort.DeathEvent -= CohortDeath;

@@ -1,8 +1,9 @@
-using Edu.Wisc.Forest.Flel.Grids;
+// using Edu.Wisc.Forest.Flel.Grids;
 using Edu.Wisc.Forest.Flel.Util;
 
-using Landis.Biomass;
-using Landis.Landscape;
+using Landis.Core;
+using Landis.Library.BiomassCohorts;
+using Landis.SpatialModeling;
 using Landis.Species;
 
 using NUnit.Framework;
@@ -23,7 +24,7 @@ namespace Landis.Test.Biomass
 
         //---------------------------------------------------------------------
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void Init()
         {
             abiebals = Data.Species["abiebals"];
@@ -45,7 +46,7 @@ namespace Landis.Test.Biomass
 
         //---------------------------------------------------------------------
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
             Landis.Biomass.Cohort.DeathEvent -= DeathNotExpected;

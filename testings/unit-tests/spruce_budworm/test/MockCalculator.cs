@@ -1,6 +1,8 @@
 using Edu.Wisc.Forest.Flel.Util;
-using Landis.Biomass;
-using Landis.Landscape;
+
+using Landis.Core;
+using Landis.Library.BiomassCohorts;
+using Landis.SpatialModeling;
 
 namespace Landis.Test.Biomass
 {
@@ -30,9 +32,7 @@ namespace Landis.Test.Biomass
         //---------------------------------------------------------------------
 
         public int ComputeChange(ICohort    cohort,
-                                 ActiveSite site,
-                                 int        siteBiomass,
-                                 int        prevYearSiteMortality)
+                                 ActiveSite site)
         {
             CountCalled++;
             return Change;
